@@ -13,6 +13,7 @@ function BASE_CHECK () {
   
   if [ ! -f "$APPI/$APPI_USER_PACKAGE-$APPI_USER_PACKAGEV.zip" ]; then
     echo "Installation Issue: Unable to locate APP PACKAGE."
+    echo "$APPI/$APPI_USER_PACKAGE-$APPI_USER_PACKAGEV.zip"
     BASE_BD_INSTALL $E_INVALID
   fi
 }

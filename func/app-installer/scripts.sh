@@ -1,7 +1,26 @@
 # Automatic APP INSTALLER FOR VESTA CP
 # THIS SOFTWARE IS PROVIDED FOR FREE BY JOE MATTOS OWNER OF CDNMALL.COM.
 
-function INSTALL_WordPress_4.3() {
+function INSTALL_WordPress_5.1() {
+
+ APPI_QST="wp-admin/"
+
+ BASE_INSTALL_START "y" "wp-config.php" "n"
+ 
+ NEW_DB
+  
+    sed -i "s/##CHARSET##/$APPI_DB_CHAR/;s%##TPREF##%$APPI_DB_TPREF%;s%##SITEURL##%http\:\/\/$APPI_USER_DOMAIN$APPI_USER_INSTALL%;s/##ADMIN_PASS##/$APPI_SD_PASS/;s/##ADMIN_EMAIL##/$APPI_SD_EMAIL/;s/##ADMIN_USER##/$APPI_SD_USER/g" $APPI_USER_INSTALLDIR"app_data.sql"
+    sed -i "s/database_name_here/$APPI_DB_NAME/;s/username_here/$APPI_DB_USER/;s/password_here/$APPI_DB_PASS/;s/localhost/$APPI_DB_HOST/;s/utf8/$APPI_DB_CHAR/;s/wp_/$APPI_DB_TPREF/g" $APPI_USER_INSTALLDIR"wp-config.php"
+    
+    printf '%s\n' "g/##PLACE_WP_SALT##/d" a "$(curl -sL https://api.wordpress.org/secret-key/1.1/salt/)" . w | ed -s $APPI_USER_INSTALLDIR"wp-config.php"
+    
+    chmod 600 $APPI_USER_INSTALLDIR"wp-config.php"
+
+ IPORT_DB 
+
+}
+
+function INSTALL_WordPress_4.4.1() {
 
  APPI_QST="wp-admin/"
 
@@ -115,7 +134,21 @@ function INSTALL_PrestaShop_1.6.1.1() {
       fi
 }
 
-function INSTALL_Joomla_3.5.0() {
+function INSTALL_Joomla_3.4.1() {
+
+  APPI_QST="administrator/"
+
+  BASE_INSTALL_START "y" "configuration.php" "n"
+ 
+  NEW_DB
+    
+    sed -i "s/##CHARSET##/$APPI_DB_CHAR/;s/##TPREF##/$APPI_DB_TPREF/;s/##ADMIN_EMAIL##/$APPI_SD_EMAIL/;s/##ADMIN_USER##/$APPI_SD_USER/;s/##ADMIN_PASS##/$APPI_SD_PASS/g" $APPI_USER_INSTALLDIR"app_data.sql"
+    sed -i "s/##DB_HOST_HERE##/$APPI_DB_HOST/;s/##DB_NAME_HERE##/$APPI_DB_NAME/;s/##DB_USER_HERE##/$APPI_DB_USER/;s/##DB_PASS_HERE##/$APPI_DB_PASS/;s/##TPREF_HERE##/$APPI_DB_TPREF/;s/##ADMIN_EMAIL##/$APPI_SD_EMAIL/;s%##INSTALL_FOLLDER##%$APPI_INSTALLDIR%;s/##RANDOM_HERE##/$(cat /dev/urandom| tr -dc 'A-Z0-9a-z'|head -c 16)/g" $APPI_USER_INSTALLDIR"configuration.php"
+
+  IPORT_DB
+}
+
+function INSTALL_Joomla_3.4.8() {
 
   APPI_QST="administrator/"
 

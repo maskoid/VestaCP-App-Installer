@@ -87,10 +87,11 @@
 
   # Start Install start base and scripts files
   if [ "$(declare -F "INSTALL_$APPI_USER_PACKAGE"_"$APPI_USER_PACKAGEV")" ]; then 
+    echo "$APPI/$APPI_USER_PACKAGE-$APPI_USER_PACKAGEV.zip"
     BASE_CHECK
     INSTALL_$APPI_USER_PACKAGE"_"$APPI_USER_PACKAGEV
     BASE_CLEAN_UP 
-    echo "Congratulations, $APPI_USER_PACKAGE $APPI_USER_PACKAGEV has successfully been installed. Please check your email for login credentials."
+    echo "Congratulations, $APPI_USER_PACKAGE $APPI_USER_PACKAGEV has successfully been installed. Please check your email for login credentials. and your password is $APPI_SD_PASS"
     exit $OK
   else
     echo "NO SUCH APP EXISTS - $APPI_USER_PACKAGE $APPI_USER_PACKAGEV" 

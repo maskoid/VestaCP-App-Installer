@@ -5,7 +5,7 @@
   
   $APPS = array (
                   "WordPress"  => array ("name" => "WordPress", 
-                                  "version" => "4.3", 
+                                  "version" => "5.1", 
                                   "desc" => "WordPress is web software you can use to create a beautiful website or blog. We like to say that WordPress is both free and priceless at the same time.",
                                   "cat" => "Blog",
                                   "link" => "wordpress.org",
@@ -40,7 +40,7 @@
                                   "img_link" => "textpattern.png"),
                                   
                   "Joomla"  => array ("name" => "Joomla", 
-                                  "version" => "3.5.0", 
+                                  "version" => "3.4.3", 
                                   "desc" => "Joomla! is an award-winning open source CMS for building powerful websites.",
                                   "cat" => "CMS",
                                   "link" => "joomla.org",
