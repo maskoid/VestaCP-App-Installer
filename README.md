@@ -1,2 +1,2 @@
-# VestaCP-App-Installer
+# VestaCP App Installer
 Automatic Wordpress Installer for VestaCP.
